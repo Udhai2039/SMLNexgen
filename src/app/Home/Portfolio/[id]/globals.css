@@ -1,0 +1,36 @@
+/* html,
+body {
+  margin: 0;
+  height: 100%;
+  background: #22124a;
+  overflow: hidden;
+  perspective: 10rem;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+}
+
+#canvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sky {
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  background: url("https://stivs-assets.s3.us-east-2.amazonaws.com/mrp/background.png") repeat;
+  background-size: cover;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+  */

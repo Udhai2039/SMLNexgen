@@ -1,0 +1,177 @@
+/* Parent Container for Contact Page */
+.contactPage {
+  display: flex;
+  flex-direction: column; /* Stack elements in a vertical order */
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 40px;
+  padding: 20px;
+}
+
+/* First Row: Contact Form & Laptop */
+.contactContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  gap: 20px; /* Added gap between laptop and form */
+}
+
+/* Contact Description */
+.contactDescription {
+  line-height: 1.6;
+  color: #a3a3a3;
+  max-width: 50rem;
+  margin: 0 auto;
+  font-size: clamp(0.9rem, 0.825rem + 0.3vw, 1.2rem);
+  text-align: center;
+}
+
+/* Left Side: Laptop Animation */
+.laptopContainer {
+  flex: 1;
+  max-width: 50%;
+  position: relative;
+  height: 80vh; /* Set a fixed height for the container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.laptopContainer model-viewer {
+  width: 100%;
+  height: 100%; /* Take full height of the container */
+  object-fit: contain;
+  margin-right: 30vh;
+  margin-bottom: 20vh;
+}
+
+/* Right Side: Contact Form */
+.formContainer {
+  flex: 1;
+  max-width: 400px;
+  background-color: transparent;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+/* Title */
+.title {
+  color: #06038D;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Input Fields */
+.inputWrapper {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+/* Input Icons */
+.inputIcon {
+  position: absolute;
+  left: 15px;
+  top: 37%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #aaa;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Input and Textarea */
+.formInput,
+.formTextarea {
+  width: 100%;
+  padding: 15px;
+  padding-left: 45px;
+  margin-bottom: 20px;
+  border-radius: 25px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  font-size: 1rem;
+  color: #333;
+  font-family: 'Nunito Sans', sans-serif;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.185);
+}
+
+.formTextarea {
+  z-index: 1;
+  position: relative;
+}
+
+.formInput:focus,
+.formTextarea:focus {
+  border-color: #3c73ff;
+  outline: none;
+  box-shadow: 0px 4px 6px rgba(55, 122, 255, 0.5);
+}
+
+/* Buttons Container */
+.buttonContainer {
+  display: flex;
+  gap: 10px;
+}
+
+/* Button Styles */
+.sendButton {
+  flex: 1;
+  padding: 15px;
+  border-radius: 25px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+  font-family: 'Nunito Sans', sans-serif;
+  background: linear-gradient(90deg, #fb9d56, #ef8350);
+  color: white;
+}
+
+.sendButton:hover {
+  transform: translateY(-5px) scale(1.05); /* Slight scale increase */
+  background: linear-gradient(90deg, #ef8350, #fb9d56);
+}
+
+/* Error Messages */
+.errorMessage {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .contactContainer {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px; /* Added gap between laptop and form */
+  }
+
+  .formContainer,
+  .laptopContainer {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .laptopContainer {
+    height: 50vh; /* Adjust height for smaller screens */
+  }
+}
+
+@media (max-width: 600px) {
+  
+  .laptopContainer model-viewer {
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+ 
+  .laptopContainer {
+    height: 40vh; /* Further adjust height for mobile */
+  }
+}

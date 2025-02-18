@@ -1,0 +1,233 @@
+/* Main container */
+.mainContainer {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 15px; /* Adds padding to prevent content from touching screen edges */
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.header h1 {
+  font-size: 24px;
+}
+
+.header p {
+  font-size: 14px;
+  max-width: 90%;
+}
+
+/* Divider */
+.divider {
+  width: 100%;
+  height: 3px;
+  background-color: #F4F4F4;
+  margin: 15px 0;
+}
+
+/* Section Title */
+.title {
+  font-size: 18px;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+/* Section 1: 3 Cards in a Row */
+.cardRow {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 15px 0;
+}
+
+/* Section 2: 6 Cards in Grid Layout */
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 50px auto;
+  padding: 0 10px;
+}
+
+/* Default Card styles */  
+.card {
+  background: #06038D;
+  padding: 20px;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease-in-out;
+  text-align: center;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* Image container */
+.imgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Default card image */
+.card img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Card Info */
+.cardInfo {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.cardTitle {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.cardDesc {
+  font-size: 14px;
+  max-width: 90%;
+  margin-top: 5px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* Footer */
+
+
+/* Section 2 Updates - White Background */
+.section2 .card {
+  background: white;
+  color: #333;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(65, 105, 225, 0.4);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  width: 100%;
+  max-width: 270px;
+  height: auto;
+  min-height: 330px;
+}
+
+.section2 .card:hover {
+  box-shadow: 0 6px 15px rgba(65, 105, 225, 0.6);
+  transform: scale(1.05);
+}
+
+.section2 .cardTitle {
+  color: #06038D;
+}
+
+.section2 .cardDesc {
+  color: #555;
+}
+
+/* Adjust image sizes for Section 2 */
+.section2 .imgContainer {
+  height: 140px;
+}
+
+.section2 .card img {
+  width: 50%;
+  object-fit: cover;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 22px;
+  }
+
+  .header p {
+    font-size: 14px;
+    max-width: 95%;
+  }
+
+  .cardRow {
+    gap: 15px;
+    padding: 10px 0;
+  }
+
+  .cardGrid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 0 10px;
+  }
+
+  .card {
+    padding: 15px;
+    min-height: 360px;
+  }
+
+  .section2 .card {
+    padding: 30px;
+    min-height: 310px;
+  }
+
+  .section2 .imgContainer {
+    height: 130px;
+  }
+
+  .divider {
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .header p {
+    font-size: 13px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .cardRow {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cardGrid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .card {
+    padding: 15px;
+    min-height: 320px;
+  }
+
+  .section2 .card {
+    padding: 20px;
+    min-height: 280px;
+  }
+}
