@@ -145,7 +145,7 @@ export default function RiveHero() {
         className="bg-[#09090E] rive-canvas block relative w-full h-full max-h-screen max-w-screen align-top"
         ref={setCanvasRef}
         style={{ width: "100%", height: "100%" }}
-        aria-label="Hero element for the Explore page; an interactive graphic showing planets thru a spacesuit visor"
+        aria-label="Explore SMLNEXGEN; an interactive graphic showing planets thru a spacesuit visor"
       ></canvas>
       <RiveButton />
     </div>

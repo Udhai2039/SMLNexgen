@@ -1,5 +1,5 @@
 "use client";
-//
+
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
@@ -57,7 +57,17 @@ export default function FaceButton() {
   }, []);
 
   return (
-    <div id="container" ref={containerRef} className="container">
+    <div
+      id="container"
+      ref={containerRef}
+      className="container"
+      style={{
+        "--black": "#2a2927",
+        "--white": "#fff",
+        "--face": "#fdda5f",
+        "--face-shadow": "#fd9744",
+      }}
+    >
       <button className="face-button" ref={faceButtonRef}>
         <span className="face-container" ref={faceContainerRef}>
           <span className="eye left"></span>

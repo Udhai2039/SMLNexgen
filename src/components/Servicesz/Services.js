@@ -150,7 +150,7 @@ export default function Services() {
                 <br />
                 <br />
                 <br />
-                <Link href="/Exp">
+                <Link href="/Home/Services/Exp">
                     <motion.button
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}

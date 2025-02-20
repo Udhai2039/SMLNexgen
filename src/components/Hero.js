@@ -64,15 +64,6 @@ const Hero = () => {
     }
   };
 
-  // Smooth Scroll Function for Contact Button
-  // const handleScrollToContact = () => {
-  //   e.preventDefault();
-  //   const contactSection = document.getElementById("contact");
-  //   if (contactSection) {
-  //     contactSection.scrollIntoView({ behavior: "smooth" });
-  //   }
-    
-  // };
 
   return (
     <div className={styles.heroWrapper} ref={heroRef}>

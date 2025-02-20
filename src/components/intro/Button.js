@@ -105,16 +105,23 @@ export default function RiveButton() {
     };
   }, []);
 
+  useEffect(() => {
+    if (headerRef.current) {
+      const container = headerRef.current.parentElement;
+      container.style.width = `${headerRef.current.offsetWidth}px`;
+    }
+  }, []);
+
   return (
     <div
       ref={containerRef}
       className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center"
     >
       {/* Fixed-width container for the header */}
-      <div className="inline-block w-[750px] h-[80px] overflow-hidden">
+      <div style={{width: `${headerRef.current?.offsetWidth}px`}} >
         <h1
           ref={headerRef}
-          className="text-white text-7xl lg:text-8xl tracking-wider pb-2 font-bold font-audiowide whitespace-nowrap"
+          className="font-audiowide font-bold text-white text-5xl lg:text-6xl pb-2"
           style={{
             textShadow: "1px 1px 1px rgba(0, 0, 0, 0.5)",
             userSelect: "none", // Standard property
@@ -127,13 +134,12 @@ export default function RiveButton() {
         </h1>
       </div>
 
-      {/* Adjusted container with smaller width and modified aspect ratio */}
-      <div className="rive-button-container relative w-1/3 pt-[30%] mx-auto">
+      <div className="rive-button-container relative w-1/2 pt-[25%] mx-auto" >
         <div className="absolute top-0 left-0 bottom-0 right-0">
           <Link
             href="/Home"
             aria-label="Start now; explore the SMLNEXGEN homepage"
-            className="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center w-full h-full bg-transparent text-white text-lg"
+            className="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center w-full h-full bg-transparent text-white text-sm lg:text-lg"
             style={{
               textShadow: "1px 1px 1px rgba(0, 0, 0, 0.5)",
               userSelect: "none", // Standard property

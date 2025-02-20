@@ -17,7 +17,6 @@ const ContactForm = () => {
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
-    // Lazy-load @google/model-viewer only when component mounts
     import("@google/model-viewer");
   }, []);
 
@@ -30,10 +29,15 @@ const ContactForm = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.name) newErrors.name = "Name is required.";
-    if (!formData.email) newErrors.email = "Email is required.";
-    if (!formData.phone) newErrors.phone = "Phone number is required."; // Added validation
-    if (!formData.message) newErrors.message = "Message is required.";
+    if (!formData.name.trim()) newErrors.name = "Name is required.";
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required.";
+    } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+      newErrors.email = "Enter a valid email.";
+    }
+    if (!formData.phone.trim()) newErrors.phone = "Phone number is required.";
+    if (!formData.message.trim()) newErrors.message = "Message is required.";
+    
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -47,26 +51,20 @@ const ContactForm = () => {
   };
 
   const handleReset = () => {
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-    });
+    setFormData({ name: "", email: "", phone: "", message: "" });
     setErrors({});
   };
 
   return (
     <div id="contact" className={styles.contactPage}>
       <h1 className={styles.title}>REACH US</h1>
-      {/* Contact description */}
       <p className={styles.contactDescription}>
-        Get in touch with SML NexGen LLP for AI, Cloud and Custom Software
-        solutons. Let&apos;s innovate together - Schedule a free consultation today.
+        Get in touch with SML NexGen LLP for AI, Cloud, and Custom Software
+        solutions. Let&apos;s innovate together - Schedule a free consultation today.
       </p>
 
       <div className={styles.contactContainer}>
-        {/* Left side: Laptop animation */}
+        {/* Laptop Animation */}
         <div className={styles.laptopContainer}>
           <model-viewer
             className={styles.model}
@@ -75,27 +73,23 @@ const ContactForm = () => {
             shadow-intensity="1"
             camera-controls
             touch-action="pan-y"
-            // environment-image="/models/dancing_hall_2k.hdr"
             exposure="1.5"
             disable-zoom
             disable-tap
             camera-orbit="-30deg 70deg 10m"
             field-of-view="35deg"
-            interaction-prompt="auto"  // Helps guide mobile users
-            ar  // Enable AR for mobile
+            interaction-prompt="auto"
+            ar
             autoplay
             loading="eager"
           ></model-viewer>
         </div>
 
-        {/* Right side: Minimal form */}
+        {/* Contact Form */}
         <div className={styles.formContainer}>
           <form onSubmit={handleSubmit}>
-            {/* Name */}
             <div className={styles.inputWrapper}>
-              <span className={styles.inputIcon}>
-                <FaUser />
-              </span>
+              <span className={styles.inputIcon}><FaUser /></span>
               <input
                 type="text"
                 id="name"
@@ -105,15 +99,10 @@ const ContactForm = () => {
                 className={styles.formInput}
               />
             </div>
-            {errors.name && (
-              <p className={styles.errorMessage}>{errors.name}</p>
-            )}
+            {errors.name && <p className={styles.errorMessage}>{errors.name}</p>}
 
-            {/* Email */}
             <div className={styles.inputWrapper}>
-              <span className={styles.inputIcon}>
-                <MdEmail />
-              </span>
+              <span className={styles.inputIcon}><MdEmail /></span>
               <input
                 type="email"
                 id="email"
@@ -123,15 +112,10 @@ const ContactForm = () => {
                 className={styles.formInput}
               />
             </div>
-            {errors.email && (
-              <p className={styles.errorMessage}>{errors.email}</p>
-            )}
+            {errors.email && <p className={styles.errorMessage}>{errors.email}</p>}
 
-            {/* Phone */}
             <div className={styles.inputWrapper}>
-              <span className={styles.inputIcon}>
-                <BsTelephone />
-              </span>
+              <span className={styles.inputIcon}><BsTelephone /></span>
               <input
                 type="tel"
                 id="phone"
@@ -141,15 +125,10 @@ const ContactForm = () => {
                 className={styles.formInput}
               />
             </div>
-            {errors.phone && (
-              <p className={styles.errorMessage}>{errors.phone}</p>
-            )}
+            {errors.phone && <p className={styles.errorMessage}>{errors.phone}</p>}
 
-            {/* Message */}
             <div className={styles.inputWrapper}>
-              <span className={styles.inputIcon}>
-                <FaComment /> {/* Replace this with the appropriate icon */}
-              </span>
+              <span className={styles.inputIcon}><FaComment /></span>
               <textarea
                 id="message"
                 placeholder="Message"
@@ -159,18 +138,24 @@ const ContactForm = () => {
                 className={styles.formTextarea}
               ></textarea>
             </div>
-            {errors.message && (
-              <p className={styles.errorMessage}>{errors.message}</p>
-            )}
+            {errors.message && <p className={styles.errorMessage}>{errors.message}</p>}
 
-            {/* Buttons in a row */}
             <div className={styles.buttonContainer}>
-              <button type="submit" className={styles.sendButton}>
-                Send
-              </button>
+              <button type="submit" className={styles.sendButton}>Send</button>
             </div>
           </form>
         </div>
+      </div>
+
+      {/* Google Map */}
+      <div className={styles.mapContainer}>
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15566.816478141005!2d77.8186462!3d12.7327153!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae7118acaa712f%3A0x233b1e8f19aef966!2sSmlnexgen%20llp!5e0!3m2!1sen!2sin!4v1724334760463!5m2!1sen!2sin" 
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          title="Smlnexgen LLP Location"
+        ></iframe>
       </div>
     </div>
   );

@@ -25,6 +25,7 @@ class ActionProvider {
     );
     this.addMessageToState(message);
   }
+
   handleHello() {
     const message = this.createChatBotMessage("Hello! How can I assist you today?");
     this.addMessageToState(message);
@@ -36,9 +37,10 @@ class ActionProvider {
   }
 
   handleAppointmentBooking() {
-    const message = this.createChatBotMessage("Let's get started with booking your appointment! Please provide the following details:", {
-      widget: "appointmentForm", // Use a custom widget to show the form
-    });
+    const message = this.createChatBotMessage(
+      "Let's get started with booking your appointment! Please provide the following details:",
+      { widget: "appointmentForm" } // Custom widget to show the form
+    );
     this.addMessageToState(message);
   }
 
@@ -112,10 +114,29 @@ class ActionProvider {
         response =
           "We offer 24/7 IT support, troubleshooting, and maintenance to keep your systems running smoothly.";
         break;
-
-      case "contact":
+      case "projects":
+      case "clients":
         response =
-          "Get in touch with us at smlnexgenllp@gmail.com or call +91-94870-84117 for any inquiries.";
+          "We've worked on projects like Akashkrish Toyota CRM, Sri Hari Agrotech, and many more. We are soon going to reach 50+ clients.";
+        break;
+      case "company":
+      case "location":
+      case "contact":
+      case "located":
+        response =
+          "Our company is located at: 3B 2nd Floor, JPS Tower, Thally Main Road, Hosur, Tamil Nadu, India, 635109. You can contact us at +91-94870-84117.";
+        break;
+      case "ceo":
+      case "chairman":
+      case "leader":
+      case "founder":
+      case "co-founder":
+        response =
+          "Our CEO is Sathish V, and our Chairman is Shanmuganathan Logav.";
+        break;
+      case "team":
+        response =
+          "We have a team of 25-30 skilled professionals working to deliver high-quality services.";
         break;
 
       default:
@@ -129,33 +150,97 @@ class ActionProvider {
   }
 
   handleDefault(userMessage) {
-    const keywords = ["development", "software", "security", "pricing", "support", "contact"];
-    const greetings = ["hello", "hi", "hey"];
-    const farewellWords = ["bye", "goodbye", "see you", "take care"];
+    const lowerInput = userMessage.replace(/\s+/g, "").toLowerCase();
 
-    const lowerMessage = userMessage.toLowerCase();
-
-    // Check if message is a greeting
-    if (greetings.some((word) => lowerMessage.includes(word))) {
-      this.handleHello();
+    // Check for greetings first
+    if (
+      lowerInput.includes("hi") ||
+      lowerInput.includes("hello") ||
+      lowerInput.includes("goodmorning") ||
+      lowerInput.includes("goodafternoon") ||
+      lowerInput.includes("goodevening")
+    ) {
+      const message = this.createChatBotMessage("Hello! How can we assist you today?");
+      this.addMessageToState(message);
       return;
     }
 
-    // Check if message is a farewell
-    if (farewellWords.some((word) => lowerMessage.includes(word))) {
-      this.handleGoodbye();
+    // Check for gratitude or farewells
+    if (
+      lowerInput.includes("thankyou") ||
+      lowerInput.includes("thanks") ||
+      lowerInput.includes("bye")
+    ) {
+      const message = this.createChatBotMessage("You're welcome! Have a great day!");
+      this.addMessageToState(message);
       return;
     }
 
-    // Check for keywords
+    // Service-related keyword detection
+    const serviceKeywords = {
+      "Web Development": /(webdev|webd|webdevelopment|website|site|webdesign|webservice|web)/,
+      "Digital Marketing": /(digitalmarketing|seo|socialmedia|emailmarketing|internetmarketing)/,
+      "App Development": /(appdev|mobileapp|android|ios|crossplatform|app)/,
+      "Software Development": /(softwaredev|customsoftware|programming|coding|software)/,
+      "Business Automation": /(businessautomation|processautomation|workflowautomation|automatebusiness)/,
+      "Business Solutions": /(businesssolutions|enterprisesolutions|corporatesolutions|businessstrategy)/,
+      "ERP": /(erp|enterpriseresourceplanning)/,
+      "AI": /(ai|artificialintelligence)/,
+      "MR Monitor": /(mrmonitor|businessmanagement|businessautomationtool)/,
+      "IT Services": /(itservices|techservices|informationtechnology)/,
+    };
+
+    const responses = {
+      "Web Development": "Our web development services include custom websites, e-commerce solutions, and responsive designs to enhance your online presence.",
+      "Digital Marketing": "We provide SEO, social media management, and targeted campaigns to help boost your brand’s visibility and reach.",
+      "App Development": "From iOS to Android, we build cross-platform and native apps that deliver seamless user experiences.",
+      "Software Development": "Our software solutions are designed to streamline business operations with custom development and automation.",
+      "Business Automation": "Optimize your workflow with intelligent automation tools that increase efficiency and productivity.",
+      "Business Solutions": "We offer strategic enterprise solutions to improve business performance and drive growth.",
+      "ERP": "Enhance your resource planning with our customized ERP solutions tailored to your business needs.",
+      "AI": "Leverage artificial intelligence for data-driven decision-making and automation.",
+      "MR Monitor": "Our MR Monitor tool provides comprehensive business management and automation capabilities.",
+      "IT Services": "We offer IT consulting, cloud solutions, and tech support to ensure seamless operations.",
+    };
+
+    // Check for service-related keywords
+    for (const [service, regex] of Object.entries(serviceKeywords)) {
+      if (regex.test(lowerInput)) {
+        const message = this.createChatBotMessage(responses[service]);
+        this.addMessageToState(message);
+        return;
+      }
+    }
+
+    // General keyword responses
+    const keywords = [
+      "development",
+      "software",
+      "security",
+      "pricing",
+      "support",
+      "contact",
+      "projects",
+      "clients",
+      "company",
+      "location",
+      "located",
+      "ceo",
+      "chairman",
+      "leader",
+      "founder",
+      "co-founder",
+      "team",
+    ];
+    
     for (const keyword of keywords) {
-      if (lowerMessage.includes(keyword)) {
+      if (lowerInput.includes(keyword)) {
         this.handleKeywordResponse(keyword);
         return;
       }
     }
 
-    // Default response
+    // Default response if no keyword matches
     const defaultMessage = this.createChatBotMessage(
       "I'm not sure I understand. Can you please provide more details?"
     );
@@ -164,3 +249,4 @@ class ActionProvider {
 }
 
 export default ActionProvider;
+

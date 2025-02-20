@@ -7,7 +7,7 @@ const cards = [
     title: 'Mr.Monitor',
     copy: 'An advanced ERP solution tailored for B2B businesses.',
     image: '/mr-monitor.png',
-    link: 'https://mr-monitor.com/' // Update with the actual Next.js route
+    link: 'https://mr-monitor.com/'
   },
   {
     title: 'Fechzo',
@@ -20,9 +20,10 @@ const cards = [
     image: '/toyota.png'
   },
   {
-    title: 'Ticketing System',
+    title: 'Mr.Solver',
     copy: 'An efficient platform for customers to report and track issues in real-time.',
-    image: '/ticket.png'
+    image: '/mr_solver.png',
+    link: 'https://mrmonitor.in/' // update url
   }
 ];
 
