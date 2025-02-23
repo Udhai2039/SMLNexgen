@@ -29,17 +29,15 @@ const ChatbotComponent = () => {
     <div className={styles.chatbotContainer}>
       {/* Chat Button with Icon */}
       <button className={styles.chatbotButton} onClick={handleToggleChat}>
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 64 64" fill="white">
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 64 64" fill="white">
           <g>
-            <circle cx="32" cy="32" r="28" stroke="black" strokeWidth="2" fill="#06038D" />
-            <rect x="20" y="24" width="24" height="4" rx="2" ry="2" fill="white" />
-            <rect x="20" y="32" width="24" height="4" rx="2" ry="2" fill="white" />
-            <rect x="20" y="40" width="16" height="4" rx="2" ry="2" fill="white" />
-            <circle cx="24" cy="20" r="2" fill="white" />
-            <circle cx="40" cy="20" r="2" fill="white" />
+
+            <path d="M32 4C17.64 4 6 14.98 6 28c0 6.62 2.66 12.68 7 17.29V58l12-8c2.64.66 5.42 1 7.98 1 14.36 0 26-10.98 26-24S46.36 4 32 4z"
+              fill="#06038D" stroke="#06038D" strokeWidth="8" strokeLinejoin="round" />
           </g>
         </svg>
       </button>
+
 
       {showChat && (
         <div className={`${styles.chatbotBox} ${animateClose ? styles.hide : styles.show}`}>

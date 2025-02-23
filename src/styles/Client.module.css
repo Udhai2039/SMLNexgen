@@ -1,3 +1,26 @@
+
+/* Title Container Styling */
+.titleContainer {
+  font-family: "Six Caps", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding: 2rem 0; Adjust padding for spacing */
+  background-color: transparent;
+  color: #06038D;
+  text-align: center;
+}
+
+/* Title Letter Animation */
+.titleLetter {
+  font-size: 115px;
+  font-weight: lighter;
+  padding: 10px;
+  letter-spacing: -4px;
+  display: inline-block;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
 /* Container Styling */
 .container {
   max-width: 1000px;
@@ -99,6 +122,11 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .titleLetter {
+    font-size: 80px;
+    padding: 5px;
+  }
+
   .logogrid__img {
     max-width: 100px; /* Reduce size */
     max-height: 80px;
@@ -122,14 +150,19 @@
 }
 
 @media (max-width: 480px) {
+  .titleLetter {
+    font-size: 60px;
+    padding: 3px;
+  }
+
   .logogrid__img {
-    max-width: 100px; /* Further reduce size */
+    max-width: 100px;
     max-height: 80px;
   }
 
   .marquee {
-    gap: 1rem; /* Adjust gap */
-    width: 300%; /* Makes animation more fluid on small screens */
+    gap: 1rem;
+    width: 300%;
   }
 
   .modalImage {
@@ -142,16 +175,4 @@
     top: 5px;
     right: 10px;
   }
-}
-
-/* Title Styling */
-.title h1 {
-  text-align: center;
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 28px; /* Adjusted for mobile */
-  text-transform: uppercase;
-  font-weight: bold;
-  padding: 20px;
-  margin-top: 20px;
-  color: #06038D;
 }

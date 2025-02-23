@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
 import { usePathname } from "next/navigation";
-import { MdHome, MdInfo, MdBuild, MdEmail, MdWork, MdArticle, MdMenu, MdClose } from "react-icons/md";
+import { MdHome, MdInfo, MdBuild, MdEmail, MdWork, MdArticle, MdEngineering, MdMenu, MdClose } from "react-icons/md";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "../styles/navbar.module.css";
@@ -11,7 +11,8 @@ const menuItems = [
   { title: "About", icon: <MdInfo />, link: "/Home/About" },
   { title: "Services", icon: <MdBuild />, link: "/Home/Services" },
   { title: "Portfolio", icon: <MdWork />, link: "/Home/Portfolio/1" },
-  { title: "Blog", icon: <MdArticle />, link: "/Home#blog" },
+  // { title: "Blog", icon: <MdArticle />, link: "/Home#blog" },
+  { title: "Careers", icon: <MdEngineering />, link: "/Home#careers" },
   { title: "Contact", icon: <MdEmail />, link: "/Home/Contact" },
 ];
 

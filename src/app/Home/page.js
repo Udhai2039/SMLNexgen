@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Hero from "@/components/Hero";
 import Insights from "@/components/Insights/page";
 import OurProjects from "@/components/OurProjects";
+// import Proj2 from "@/app/Proj2/page";
 import LogoGrid from "@/components/ClientSection";
 
 export default function Home() {
@@ -26,6 +27,7 @@ export default function Home() {
       <Hero />  
       <Insights />
       <OurProjects />
+      {/* <Proj2 /> */}
       <LogoGrid />
     </main>
   );

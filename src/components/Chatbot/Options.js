@@ -10,7 +10,7 @@ const Options = ({ options, actionProvider }) => {
           className={styles.optionButton}
           onClick={() => {
             if (typeof actionProvider[option.action] === "function") {
-              actionProvider[option.action](); // Ensure function exists before calling
+              actionProvider[option.action](option.question); // Pass question text
             } else {
               console.warn(`Action '${option.action}' not found in ActionProvider`);
             }

@@ -8,7 +8,7 @@ import PreviewModal from './PreviewModal';
 import PreviewModalCustomSoftware from './PreviewModalCustomSoftware';
 import PreviewModalMobileApp from './PreviewModalMobileApp';
 import styles from './services.module.css';
-
+import WhyChooseMe from "@/components/ServiceFeatures";
 export default function Services() {
     const [isInputModalOpen, setIsInputModalOpen] = useState(false);
     const [isPreviewModalOpen, setIsPreviewModalOpen] = useState(false);
@@ -77,6 +77,8 @@ export default function Services() {
     return (
         <div id="services" className={styles.services}>
             <ServiceSection />
+            <WhyChooseMe />
+             
             <div className={styles.negativeMargin}>
 
 
@@ -224,6 +226,7 @@ export default function Services() {
                         />
                     )}
                 </AnimatePresence>
+              
             </div>
         </div>
     );

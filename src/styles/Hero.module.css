@@ -97,8 +97,8 @@
 .text span {
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-size: 1.4rem;
-  color: #cfc6c6;
+  font-size: 10rem;
+  color: #06038D;
   font-weight: bold;
 }
 
@@ -106,17 +106,20 @@
 .text h1 {
   text-transform: capitalize;
   letter-spacing: 1px;
-  font-family: "Playfair Display", serif;
   font-weight: 900;
-  font-size: clamp(4rem, 3.5rem + 2vw, 6rem);
+  font-size: clamp(2rem, 3.5rem + 2vw, 6rem);
 
-  background: #06038d;
+  background: #e2e0e0;
   padding: 20px;
-  -webkit-background-clip: text; 
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  transition: text-shadow 0.4s ease-in-out;
+  transition: text-shadow 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+
+  /* Text shadow for glowing effect */
+  text-shadow: 3px 3px 5px rgb(244, 244, 244);
 }
+
 
 /* Arrows & Text */
 .textContainer {
@@ -302,12 +305,14 @@
   }
 
   .text span {
-    font-size: 1.2rem;
+    font-size: 2.0rem;
+    font-weight: 1000;
   }
 
   .text h1 {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     padding: 10px;
+    
   }
 
   .text p {

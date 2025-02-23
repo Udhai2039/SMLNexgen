@@ -1,6 +1,12 @@
 /* Google Font Import */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;800&display=swap");
-
+.montoyaTextWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -140px;
+  /* Adjust this value to move it up/down */
+}
 /* Section Styles */
 .section {
   font-family: "Poppins", sans-serif;
@@ -10,7 +16,7 @@
   text-align: center;
   width: 100%;
   margin-inline: auto;
-  margin-top: 5px;
+  margin-top: -300px;
   position: relative;
   max-width: 100%;
   overflow-x: hidden;

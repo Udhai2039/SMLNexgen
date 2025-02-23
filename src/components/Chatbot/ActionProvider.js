@@ -25,7 +25,31 @@ class ActionProvider {
     );
     this.addMessageToState(message);
   }
-
+  handleFAQ() {
+    const message = this.createChatBotMessage(
+      "Here are some frequently asked questions. Click on a question to see the answer:",
+      {
+        widget: "faqOptions",
+      }
+    );
+    this.addMessageToState(message);
+  }
+  
+  handleFAQResponse(question) {
+    const faqAnswers = {
+      "What is SMLNEXGEN LLP?": "SMLNEXGEN LLP is a leading provider of innovative digital solutions, offering a comprehensive range of services including website development, mobile app creation, custom software development, and strategic digital marketing.",
+      "How can I book an appointment?": "Click the 'Book an Appointment' option in the chatbot.",
+      "What services do you offer?": "We specialize in Web Development, App Development, Custom Software, and IT Support.",
+      "How can I contact support?": "You can email us at support@smlnexgen.com or call +91-94870-84117.",
+      "What are your pricing plans?": "Our pricing depends on the project scope. Contact us for a personalized quote.",
+    };
+  
+    const response = faqAnswers[question] || "Sorry, I don't have an answer for that.";
+    const message = this.createChatBotMessage(response);
+    this.addMessageToState(message);
+  }
+  
+  
   handleHello() {
     const message = this.createChatBotMessage("Hello! How can I assist you today?");
     this.addMessageToState(message);

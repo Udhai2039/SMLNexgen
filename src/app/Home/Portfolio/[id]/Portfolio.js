@@ -3,7 +3,8 @@ import { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import styles from "../styles/Portfolio.module.css";
+import styles from "./Portfolio.module.css";
+import MontoyaText from "@/components/PortfolioTitleAnimation";
 
 export default function Portfolio() {
   const router = useRouter();
@@ -11,7 +12,6 @@ export default function Portfolio() {
   const containerRef = useRef(null);
   const boxesRef = useRef([]);
   const animationRef = useRef(null); // Track GSAP animation
-
   const portfolioRef = useRef(null);
 
   const boxes = [
@@ -51,11 +51,12 @@ export default function Portfolio() {
       gsap.set(container, { clearProps: "all" }); // Clean up styles
     };
   }, []);
+
   const handleBoxClick = (index, id) => {
     setActiveBox(index);
-  
+
     gsap.to(boxesRef.current[index], {
-      scale: 1.1,  // Smaller zoom to make it faster
+      scale: 1.1, // Smaller zoom to make it faster
       duration: 0.15, // Faster animation
       ease: "power3.out",
       onComplete: () => {
@@ -64,31 +65,36 @@ export default function Portfolio() {
     });
   };
 
-
   return (
-    <div id="portfolio" ref={portfolioRef} className={styles.container}>
-      <h1 className={styles.heading}>Our Portfolio</h1>
-      <div className={styles.boxColumnWrapper}>
-        <div className={styles.boxColumn} ref={containerRef}>
-          {boxes.map((box, index) => (
-            <div
-              key={index}
-              className={`${styles.box} ${activeBox === index ? styles.active : ""}`}
-              ref={(el) => (boxesRef.current[index] = el)}
-              onClick={() => handleBoxClick(index, box.id)}
-            >
-              <Image
-                src={box.image}
-                alt={box.title}
-                width={200}
-                height={150}
-                className={styles.image}
-                unoptimized
-              />
-              <h4 className={styles.boxTitle}>{box.title}</h4>
-              <p className={styles.boxText}>{box.description}</p>
-            </div>
-          ))}
+    <div>
+      {/* Move MontoyaText outside the container for easier positioning */}
+      <div className={styles.montoyaTextWrapper}>
+      <MontoyaText title="PORTFOLIO" />
+      </div>
+
+      <div id="portfolio" ref={portfolioRef} className={styles.container}>
+        <div className={styles.boxColumnWrapper}>
+          <div className={styles.boxColumn} ref={containerRef}>
+            {boxes.map((box, index) => (
+              <div
+                key={index}
+                className={`${styles.box} ${activeBox === index ? styles.active : ""}`}
+                ref={(el) => (boxesRef.current[index] = el)}
+                onClick={() => handleBoxClick(index, box.id)}
+              >
+                <Image
+                  src={box.image}
+                  alt={box.title}
+                  width={200}
+                  height={150}
+                  className={styles.image}
+                  unoptimized
+                />
+                <h4 className={styles.boxTitle}>{box.title}</h4>
+                <p className={styles.boxText}>{box.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

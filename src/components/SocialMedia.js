@@ -8,13 +8,13 @@ const SocialMedia = () => {
       <a href="https://www.facebook.com/profile.php?id=61559262780126&mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer">
         <FaFacebook className="text-gray-600 text-2xl hover:text-blue-500 transition duration-300" />
       </a>
-      <a href="https://x.com/smlnexgenllp?t=fuR0lqR2HBp4_qVS3TZywA&s=09" target="_blank" rel="noopener noreferrer">
+      <a href="https://x.com/SMLnexgen" target="_blank" rel="noopener noreferrer">
         <FaXTwitter className="text-gray-600 text-2xl hover:text-gray-400 transition duration-300" />
       </a>
       <a href="https://www.instagram.com/smlnexgen_llp?igsh=NXVtb2xhZDh4ZTl2" target="_blank" rel="noopener noreferrer">
         <FaInstagram className="text-gray-600 text-2xl hover:text-pink-500 transition duration-300" />
       </a>
-      <a href="https://www.linkedin.com/company/smlnexgen-llp/" target="_blank" rel="noopener noreferrer">
+      <a href="https://www.linkedin.com/in/smlnexgen-llp/" target="_blank" rel="noopener noreferrer">
         <FaLinkedin className="text-gray-600 text-2xl hover:text-blue-700 transition duration-300" />
       </a>
       <a href="https://wa.me/919487084117" target="_blank" rel="noopener noreferrer">

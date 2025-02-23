@@ -1,26 +1,79 @@
+"use client"; // Ensure this is a client component in Next.js
 import { useState } from "react";
-import styles from "./AppointmentForm.module.css"; // Assuming your CSS file is named AppointmentForm.module.css
+import styles from "./AppointmentForm.module.css"; // Assuming this exists
 
-const AppointmentForm = ({ actionProvider }) => {
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState(""); // New phone number field
-  const [dateTime, setDateTime] = useState("");
-  const [reason, setReason] = useState("");
-  const [selectedService, setSelectedService] = useState(""); // New service selection field
+const AppointmentForm = () => {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phoneNumber: "",
+    dateTime: "",
+    reason: "",
+    selectedService: "",
+  });
+  const [errors, setErrors] = useState({});
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.fullName.trim()) newErrors.fullName = "Full Name is required.";
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required.";
+    } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+      newErrors.email = "Enter a valid email.";
+    }
+    if (!formData.phoneNumber.trim()) {
+      newErrors.phoneNumber = "Phone number is required.";
+    } else if (!/^\+?[0-9]{10,13}$/.test(formData.phoneNumber)) {
+      newErrors.phoneNumber = "Enter a valid phone number (10-13 digits).";
+    }
+    if (!formData.dateTime.trim()) newErrors.dateTime = "Date and time are required.";
+    if (!formData.selectedService) newErrors.selectedService = "Please select a service.";
+    if (!formData.reason.trim()) newErrors.reason = "Reason is required.";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Send appointment data to ActionProvider for confirmation
-    actionProvider.handleAppointmentConfirmation({
-      fullName,
-      email,
-      phoneNumber,
-      dateTime,
-      reason,
-      selectedService,
-    });
+    if (validateForm()) {
+      try {
+        const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://192.168.0.197:5000'; // Replace with your backend IP
+        const response = await fetch(`${backendUrl}/api/book-service`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        const responseData = await response.json();
+        if (response.ok) {
+          alert('Appointment booked successfully!');
+          setFormData({
+            fullName: "",
+            email: "",
+            phoneNumber: "",
+            dateTime: "",
+            reason: "",
+            selectedService: "",
+          });
+          setErrors({});
+        } else {
+          alert(`Error submitting appointment: ${responseData.message}`);
+        }
+      } catch (error) {
+        console.error('Fetch error:', error);
+        alert('Error submitting appointment. Please try again later.');
+      }
+    }
   };
 
   return (
@@ -31,45 +84,54 @@ const AppointmentForm = ({ actionProvider }) => {
           Full Name:
           <input
             type="text"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
+            name="fullName" // Changed to name for consistency
+            value={formData.fullName}
+            onChange={handleChange}
             required
           />
+          {errors.fullName && <p className={styles.errorMessage}>{errors.fullName}</p>}
         </label>
         <label>
           Email Address:
           <input
             type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
             required
           />
+          {errors.email && <p className={styles.errorMessage}>{errors.email}</p>}
         </label>
         <label>
           Phone Number:
           <input
             type="tel"
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
+            name="phoneNumber"
+            value={formData.phoneNumber}
+            onChange={handleChange}
             required
-            pattern="^[+]?[0-9]{10,13}$" // Optional: You can validate phone number format
+            pattern="^\+?[0-9]{10,13}$"
             placeholder="Enter your phone number"
           />
+          {errors.phoneNumber && <p className={styles.errorMessage}>{errors.phoneNumber}</p>}
         </label>
         <label>
           Preferred Date/Time:
           <input
             type="datetime-local"
-            value={dateTime}
-            onChange={(e) => setDateTime(e.target.value)}
+            name="dateTime"
+            value={formData.dateTime}
+            onChange={handleChange}
             required
           />
+          {errors.dateTime && <p className={styles.errorMessage}>{errors.dateTime}</p>}
         </label>
         <label>
           Select Service:
           <select
-            value={selectedService}
-            onChange={(e) => setSelectedService(e.target.value)}
+            name="selectedService"
+            value={formData.selectedService}
+            onChange={handleChange}
             required
           >
             <option value="">Select a Service</option>
@@ -78,14 +140,17 @@ const AppointmentForm = ({ actionProvider }) => {
             <option value="Custom Software">Custom Software</option>
             <option value="IT Support">IT Support</option>
           </select>
+          {errors.selectedService && <p className={styles.errorMessage}>{errors.selectedService}</p>}
         </label>
         <label>
           Reason for Appointment:
           <textarea
-            value={reason}
-            onChange={(e) => setReason(e.target.value)}
+            name="reason"
+            value={formData.reason}
+            onChange={handleChange}
             required
           />
+          {errors.reason && <p className={styles.errorMessage}>{errors.reason}</p>}
         </label>
         <button type="submit">Submit Appointment</button>
       </form>

@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "../styles/Hero.module.css";
 import Link from "next/link";
 import SocialMedia from "./SocialMedia";
-
+import WordAnimation from "@/components/GlowingText";
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
@@ -74,8 +74,10 @@ const Hero = () => {
       {/* <SocialMedia theme="dark"/> */}
       <section className={styles.hero}>
         <div className={styles.text}>
-          <span>DISCOVER</span>
-          <h1>SMLNEXGEN LLP</h1>
+          <h1>DISCOVER</h1>
+          <WordAnimation /> 
+          {/* <h1>SMLNEXGEN LLP</h1> */}
+
           <div className={styles.textContainer}>
             <FiChevronLeft className={styles.arrow} onClick={() => changeText("prev")} />
             <div className={styles.sliderWrapper}>
