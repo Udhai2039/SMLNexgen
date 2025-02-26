@@ -45,7 +45,7 @@ export default function Home() {
       <div className={`${styles.landingPage} ${styles.section}`}>
         <section className={styles.sectionContent}>
           <h1><span>Careers</span></h1>
-          <p><span>Let's Build the Future Together.</span></p>
+          <p><span>Let&apos;s Build the Future Together.</span></p>
           <p><span>Since 2024</span></p>
         </section>
         <div id="smlname" className={styles.smlname}>
