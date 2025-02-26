@@ -24,6 +24,7 @@
   width: 100%;
   max-width: 1200px;
   gap: 20px; /* Added gap between laptop and form */
+  margin-top: 40px;
 }
 
 /* Contact Description */
@@ -155,7 +156,7 @@
 .mapContainer {
   width: 100%;
   max-width: 1200px;
-  margin-top: 20px; /* Adjust spacing as needed */
+  margin-top: 80px; /* Adjust spacing as needed */
 }
 
 .mapContainer iframe {

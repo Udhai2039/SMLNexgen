@@ -1,0 +1,218 @@
+.footerSection {
+  background: #DDDDDD;
+  padding: 50px 0;
+  color: #000000;
+  position: relative;
+  z-index: 9999;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Footer CTA Section */
+.footerCta {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #636161;
+  padding-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.singleCta {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+  flex: 1;
+  min-width: 250px;
+}
+
+/* Adjusted Icon Position */
+.icon {
+  font-size: 25px;
+  color: #ff5e14;
+  position: relative;
+  top: 0px;
+  left: 80px;
+}
+
+/* CTA Text */
+.ctaText h4 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.ctaText span {
+  font-size: 14px;
+}
+
+.ctaText a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.ctaText a:hover {
+  color: #ff5e14;
+}
+
+/* Footer Content */
+.footerContent {
+  margin-left: 120px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-top: 30px;
+  gap: 400px;
+}
+
+.footerWidget {
+  flex: 1;
+  min-width: 400px;
+}
+
+.footerLinks {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footerLogo {
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.footerLinks h3 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* Footer Social Icons */
+.footerSocial {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.footerSocial a {
+  color: #000000;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.footerSocial a:hover {
+  color: #ff5e14;
+}
+
+/* Useful Links */
+.footerLinks ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footerLinks ul li {
+  margin-bottom: 8px;
+}
+
+.footerLinks ul li a {
+  color: #000000;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footerLinks ul li a:hover {
+  color: #ff5e14;
+}
+
+/* Footer Bottom */
+.footerBottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #6a6a6a;
+  margin-top: 20px;
+}
+
+.footerBottom p {
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footerCta,
+  .footerContent {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px; /* Reduced gap for better spacing on mobile */
+  }
+
+  .singleCta {
+    justify-content: center;
+    margin-bottom: 25px; /* Slightly increased for separation */
+    gap: 20px; /* Reduced gap between icon and text */
+    flex-direction: row; /* Keep icon and text side by side */
+    min-width: unset; /* Allow flexibility on smaller screens */
+    width: 100%; /* Full width for better alignment */
+  }
+
+  .icon {
+    left: 0; /* Reset left positioning for mobile */
+    top: 0; /* Reset top positioning */
+    font-size: 20px; /* Slightly smaller icon for mobile */
+  }
+
+  .ctaText {
+    max-width: 80%; /* Limit text width for readability */
+  }
+
+  .ctaText h4 {
+    font-size: 16px; /* Slightly smaller heading */
+  }
+
+  .ctaText span {
+    font-size: 12px; /* Slightly smaller text */
+    display: block; /* Ensure text wraps nicely */
+  }
+
+  .footerContent {
+    margin-left: 0; /* Remove left margin for mobile */
+    padding-top: 20px; /* Slightly reduced padding */
+    gap: 30px; /* Reduced gap for mobile */
+  }
+
+  .footerWidget {
+    min-width: unset; /* Remove min-width constraint */
+    width: 100%; /* Full width on mobile */
+    text-align: center; /* Center align content */
+  }
+
+  .footerLinks {
+    min-width: unset; /* Remove min-width constraint */
+    width: 100%; /* Full width on mobile */
+    text-align: center; /* Center align links */
+  }
+
+  .footerLogo {
+    margin: 0 auto 15px auto; /* Center logo */
+  }
+
+  .footerSocial {
+    justify-content: center; /* Center social icons */
+  }
+
+  .footerLinks h3 {
+    font-size: 20px; /* Slightly smaller heading */
+  }
+
+  .footerLinks ul li {
+    margin-bottom: 6px; /* Slightly reduced spacing */
+  }
+
+  .footerLinks ul li a {
+    font-size: 14px; /* Slightly smaller links */
+  }
+}
