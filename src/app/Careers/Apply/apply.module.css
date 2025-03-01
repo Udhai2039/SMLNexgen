@@ -1,0 +1,193 @@
+.apply__page {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #ffffff;
+    color: #1f2937;
+    line-height: 1.6;
+    margin-top: 130px;
+}
+
+.apply__page * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Uncommented for consistency */
+}
+
+.apply__header {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    color: white;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 0px 15px -3px rgba(0, 0, 0, 0.1);
+    max-width: 90%; /* Changed from width: 40% */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.apply__subheading {
+    font-size: 1.75rem;
+    opacity: 0.9;
+    max-width: 600px;
+    text-align: center; /* Centers the text horizontally */
+    margin-left: auto; /* Centers the block element horizontally */
+    margin-right: auto; /* Centers the block element horizontally */
+}
+
+.apply__sectionHeader {
+    font-size: 2rem; /* Reduced base size */
+    color: #2563eb;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.apply__sectionHeader::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px; /* Slightly smaller */
+    height: 4px;
+    background: #f59e0b;
+    border-radius: 2px;
+}
+
+.apply__applicationForm {
+    background: white;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.33);
+    margin: 2rem auto;
+    max-width: 90%; /* Changed from width: 80% */
+}
+
+.apply__formGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Reduced min width */
+    gap: 1rem;
+}
+
+.apply__formGroup {
+    margin-bottom: 1rem;
+}
+
+.apply__formGroup label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #1f2937;
+}
+
+.apply__formGroup input,
+.apply__formGroup textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.apply__submitBtn {
+    background: #1e90ff;
+    color: white;
+    padding: 0.75rem 1.5rem; /* Slightly smaller */
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: auto;
+    display: block;
+    margin: 0 auto; /* Center button */
+}
+
+.apply__fileActions {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    padding: 8px;
+    flex-wrap: wrap; /* Added for mobile */
+}
+
+.apply__fileButton {
+    padding: 8px 16px; /* Increased for touch targets */
+    font-size: 14px;
+    font-weight: 500;
+    color: black;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 768px) {
+    .apply__page {
+        margin-top: 130px;
+    }
+
+    .apply__header {
+        padding: 1.5rem 1rem;
+    }
+
+    .apply__subheading {
+        font-size: 1.25rem;
+    }
+
+    .apply__sectionHeader {
+        font-size: 1.75rem;
+    }
+
+    .apply__applicationForm {
+        padding: 1.5rem;
+    }
+
+    .apply__formGrid {
+        grid-template-columns: 1fr; /* Stack on tablet */
+    }
+}
+
+@media (max-width: 480px) {
+    .apply__page {
+        margin-top: 130px;
+    }
+
+    .apply__header {
+        padding: 1rem 0.75rem;
+        border-radius: 0.75rem;
+    }
+
+    .apply__subheading {
+        font-size: 1rem;
+    }
+
+    .apply__sectionHeader {
+        font-size: 1.5rem;
+    }
+
+    .apply__applicationForm {
+        padding: 1rem;
+        border-radius: 1rem;
+    }
+
+    .apply__formGroup input,
+    .apply__formGroup textarea {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .apply__submitBtn {
+        padding: 0.75rem 1rem;
+        width: 100%; /* Full width on mobile */
+    }
+
+    .apply__fileButton {
+        padding: 6px 12px;
+        width: 100%; /* Stack buttons */
+    }
+}

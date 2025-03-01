@@ -1,4 +1,8 @@
+'use client';
+
+import { SessionProvider } from "next-auth/react";
 import Navbar from "./components/Navbar";
+import Footercomponent from "./components/footer";
 
 export default function RootLayout({ children }) {
   return (
@@ -10,10 +14,13 @@ export default function RootLayout({ children }) {
         />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
-        </head>
+      </head>
       <body>
+        <SessionProvider>
         <Navbar />
         {children}
+        <Footercomponent />
+        </SessionProvider>
       </body>
     </html>
   );

@@ -1,19 +1,17 @@
-"use client";
-
 import { FaMapMarkerAlt, FaPhone, FaEnvelopeOpen, FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "../styles/Footer.module.css";
+import styles from "../styles/Footerstyle.module.css";
 
-const Footer = () => {
+const Footercomponent = () => {
   return (
-    <footer className={styles.footerSection}>
-      <div className={styles.container}>
+    <footer className={styles.footer__section}>
+      <div className={styles.footer__container}>
         {/* CTA Section */}
-        <div className={styles.footerCta}>
-          <div className={styles.singleCta}>
-            <FaMapMarkerAlt className={styles.icon} />
-            <div className={styles.ctaText}>
+        <div className={styles.footer__cta}>
+          <div className={styles.footer__ctaItem}>
+            <FaMapMarkerAlt className={styles.footer__icon} />
+            <div className={styles.footer__ctaText}>
               <h4>Find us</h4>
               <span>
                 <a
@@ -26,9 +24,9 @@ const Footer = () => {
               </span>
             </div>
           </div>
-          <div className={styles.singleCta}>
-            <FaPhone className={styles.icon} />
-            <div className={styles.ctaText}>
+          <div className={styles.footer__ctaItem}>
+            <FaPhone className={styles.footer__icon} />
+            <div className={styles.footer__ctaText}>
               <h4>Call us</h4>
               <span>
                 <a href="tel:+919487084117">
@@ -37,9 +35,9 @@ const Footer = () => {
               </span>
             </div>
           </div>
-          <div className={styles.singleCta}>
-            <FaEnvelopeOpen className={styles.icon} />
-            <div className={styles.ctaText}>
+          <div className={styles.footer__ctaItem}>
+            <FaEnvelopeOpen className={styles.footer__icon} />
+            <div className={styles.footer__ctaText}>
               <h4>Mail us</h4>
               <span>
                 <a href="mailto:smlnexgenllp@gmail.com">
@@ -51,21 +49,23 @@ const Footer = () => {
         </div>
 
         {/* Footer Content */}
-        <div className={styles.footerContent}>
+        <div className={styles.footer__content}>
           {/* Logo & Social Links */}
-          <div className={styles.footerWidget}>
+          <div className={styles.footer__widget}>
             <Link href="/">
               <Image
                 src="/sml-logo.png"
                 width={100}
                 height={50}
                 alt="logo"
-                className={styles.footerLogo}
+                className={styles.footer__logo}
               />
             </Link>
-            <p>We are a tech-driven company dedicated to delivering innovative software solutions tailored to your business needs.</p>
+            <p>
+              We are a tech-driven company dedicated to delivering innovative software solutions tailored to your business needs.
+            </p>
 
-            <div className={styles.footerSocial}>
+            <div className={styles.footer__social}>
               <Link href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
                 <FaInstagram />
               </Link>
@@ -79,12 +79,18 @@ const Footer = () => {
           </div>
 
           {/* Useful Links */}
-          <div className={styles.footerLinks}>
+          <div className={styles.footer__links}>
             <h3>Useful Links</h3>
             <ul>
-              {["Home", "About", "Services", "Portfolio", "Contact"].map((link) => (
-                <li key={link}>
-                  <Link href={`#${link.toLowerCase()}`}>{link}</Link>
+              {[
+                { name: "Home", url: "/Home" },
+                { name: "About", url: "/Home/About" },
+                { name: "Services", url: "/Home/Services" },
+                { name: "Portfolio", url: "/Home/Portfolio/1" },
+                { name: "Contact", url: "/Home/Contact" },
+              ].map(({ name, url }) => (
+                <li key={name}>
+                  <Link href={url}>{name}</Link>
                 </li>
               ))}
             </ul>
@@ -93,11 +99,11 @@ const Footer = () => {
       </div>
 
       {/* Footer Bottom */}
-      <div className={styles.footerBottom}>
+      <div className={styles.footer__bottom}>
         <p>© 2025, All Rights Reserved.</p>
       </div>
     </footer>
   );
 };
 
-export default Footer;
+export default Footercomponent;
