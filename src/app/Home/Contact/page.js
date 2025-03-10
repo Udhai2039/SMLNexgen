@@ -61,7 +61,7 @@ const ContactForm = () => {
       };
 
      try {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/contact`, {
+  const response = await fetch('https://sml-backend-qgp6.onrender.com/api/contact', {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
